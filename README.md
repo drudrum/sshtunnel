@@ -9,13 +9,14 @@ version: '2'
 services:
 
   sshtunnel:
-    image: nowsci/sshtunnel
+    image: drudrum/sshtunnel
     container_name: sshtunnel
     ports:
       - "2525:2525"
     volumes:
       - ./sshtunnel/data/:/data/:ro
     environment:
+      - TUNNEL_USER=user
       - TUNNEL_HOST=host.example.com
       - TUNNEL_PORT=22
       - REMOTE_HOST=localhost
@@ -33,7 +34,7 @@ version: '2'
 services:
 
   sshtunnel:
-    image: nowsci/sshtunnel
+    image: drudrum/sshtunnel
     container_name: sshtunnel
     volumes:
       - ./sshtunnel/data/:/data/:ro
