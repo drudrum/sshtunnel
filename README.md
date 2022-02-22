@@ -14,15 +14,19 @@ services:
     ports:
       - "2525:2525"
     volumes:
-      - ./sshtunnel/data/:/data/:ro
+      # Mount private key file
+      #- ./keyfile:/data/keyfile:ro
+      #
+      # Mount writable folder for key generate
+      - ./sshtunnel:/sshtunnel:rw
     environment:
-      - TUNNEL_USER=user
-      - TUNNEL_HOST=host.example.com
-      - TUNNEL_PORT=22
+      - SSH_USER=user
+      - SSH_HOST=host.example.com
+      - SSH_PORT=22
       - REMOTE_HOST=localhost
       - LOCAL_PORT=2525
       - REMOTE_PORT=25
-      - KEY=/data/keyfile
+      # - KEY=/data/keyfile
     restart: always
 ```
 
@@ -37,14 +41,18 @@ services:
     image: drudrum/sshtunnel
     container_name: sshtunnel
     volumes:
-      - ./sshtunnel/data/:/data/:ro
+      # Mount private key file
+      #- ./keyfile:/data/keyfile:ro
+      #
+      # Mount writable folder for key generate
+      - ./sshtunnel:/sshtunnel:rw
     environment:
       - REMOTE=true
-      - TUNNEL_HOST=host.example.com
-      - TUNNEL_PORT=22
+      - SSH_HOST=host.example.com
+      - SSH_PORT=22
       - CONTAINER_HOST=nginx
       - CONTAINER_PORT=80
       - REMOTE_PORT=8080
-      - KEY=/data/keyfile
+      # - KEY=/data/keyfile
     restart: always
 ```
