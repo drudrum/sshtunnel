@@ -23,6 +23,8 @@ services:
       - SSH_USER=user
       - SSH_HOST=host.example.com
       - SSH_PORT=22
+      # multiple ports or extra options
+      # - ARGS=-L *:27018:localhost:27017 -L *:3000:localhost:3000
       - REMOTE_HOST=localhost
       - LOCAL_PORT=2525
       - REMOTE_PORT=25

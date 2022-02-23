@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM alpine:3.3
 MAINTAINER NOSPAM <nospam@nnn.nnn>
 
 ENV SSH_USER=${SSH_USER:-user}
@@ -7,8 +7,8 @@ ENV REMOTE_HOST=${REMOTE_HOST:-localhost}
 
 COPY init.sh /init.sh
 
-RUN apk add --update openssh-client && rm -rf /var/cache/apk/*; \
-    chmod +x /init.sh
+RUN apk add --no-cache openssh-client
+RUN chmod +x /init.sh
 
 CMD /init.sh
 EXPOSE 1-65535
