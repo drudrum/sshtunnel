@@ -17,4 +17,4 @@ if [ ! -z $REMOTE_PORT ]; then
 fi
 
 # echo "ssh -o StrictHostKeyChecking=no -Nn $SSH_USER@$SSH_HOST -p $SSH_PORT -i $KEY $tunnelArgs"
-ssh -o StrictHostKeyChecking=no -Nn -T -o ServerAliveInterval=30 -o ExitOnForwardFailure=yes $SSH_USER@$SSH_HOST -p $SSH_PORT -i $KEY $tunnelArgs
+ssh -o StrictHostKeyChecking=no -NT -o ServerAliveInterval=30 -o ExitOnForwardFailure=yes $SSH_USER@$SSH_HOST -p $SSH_PORT -i $KEY $tunnelArgs
